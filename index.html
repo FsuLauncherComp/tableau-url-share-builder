@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau Share URL Helper</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5 mb-5">
+        <h1 class="mb-2">Tableau Share URL Helper</h1>
+        <h6 class="mb-4">A small poorly written utility to help make Tableau sharable urls</h6>
+        
+        <!-- Tableau Dashboard/View URL -->
+        <div class="mb-3">
+            <label for="dashboardUrl" class="form-label">Tableau Dashboard/View URL</label>
+            <input type="text" class="form-control" id="dashboardUrl" placeholder="Enter the Tableau URL">
+        </div>
+
+        <!-- Optional Arguments Section -->
+        <div class="mb-3">
+            <h5>Embed Options</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <!-- [Existing table rows for checkboxes remain unchanged] -->
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="embedYes" value=":embed=yes">
+                                <label class="form-check-label" for="embedYes">Embed View (:embed=yes)</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="toolbar" value=":toolbar=no">
+                                <label class="form-check-label" for="toolbar">Hide Toolbar (:toolbar=no)</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="showVizHomeNo" value=":showVizHome=no">
+                                <label class="form-check-label" for="showVizHomeNo">Hide Viz Home (:showVizHome=no)</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="deviceDesktop" value=":device=desktop">
+                                <label class="form-check-label" for="deviceDesktop">Force Desktop Layout (:device=desktop)</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="showDataDetails" value=":showDataDetails=no">
+                                <label class="form-check-label" for="showDataDetails">Show Data Details (:showDataDetails=no)</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="tabsNo" value=":tabs=no">
+                                <label class="form-check-label" for="tabsNo">Hide Tabs (:tabs=no)</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="refreshYes" value=":refresh=yes">
+                                <label class="form-check-label" for="refreshYes">Force Data Refresh (:refresh=yes)</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="showAppBannerNo" value=":showAppBanner=false">
+                                <label class="form-check-label" for="showAppBannerNo">Hide App Banner (:showAppBanner=false)</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="renderExplicit" value=":render=explicit">
+                                <label class="form-check-label" for="renderExplicit">Explicit Rendering (:render=explicit)</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="showShareOptions" value=":showShareOptions=yes">
+                                <label class="form-check-label" for="showShareOptions">Show Share Options (:showShareOptions=yes)</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="subscriptionsYes" value=":subscriptions=yes">
+                                <label class="form-check-label" for="subscriptionsYes">Show Subscriptions (:subscriptions=yes)</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="recordPerformanceYes" value=":record_performance=yes">
+                                <label class="form-check-label" for="recordPerformanceYes">Record Performance (:record_performance=yes)</label>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section for Custom Arguments -->
+        <div class="mb-3">
+            <h5>Add Custom Arguments</h5>
+            <div id="customArgsContainer">
+                <!-- Initial Row with Add Argument Button -->
+                <div class="row mb-2 align-items-center">
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" placeholder="Key (e.g., filter)" name="key[]">
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" placeholder="Value (e.g., Region=West)" name="value[]">
+                    </div>
+                    <div class="col-md-2 text-end">
+                        <button type="button" class="btn btn-outline-primary" id="addArgument">Add Argument</button>
+                    </div>
+                </div>
+            </div>
+            <!-- The Add Argument button is now inside the initial row -->
+        </div>
+
+        <!-- Generate URL Button -->
+        <button type="button" class="btn btn-success" id="generateUrl">Generate URL</button>
+
+        <!-- Resulting URL Display -->
+        <div class="mt-4 mb-4">
+            <h5>Resulting URL</h5>
+            <input type="text" class="form-control" id="resultUrl" readonly>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
